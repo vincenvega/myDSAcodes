@@ -1,0 +1,27 @@
+class Solution {
+public:
+    
+     vector<vector<int>>ans;  // global arr
+    
+    void solve(vector<int>&nums, vector<int>temp, int idx){ 
+        // not passing temp by adress
+        // so that copies of temp is made recursively
+        
+        // base case       
+        if(idx>=nums.size()){                      
+            ans.push_back(temp);
+            return;
+        }
+        
+        solve(nums,temp,idx+1);
+        temp.push_back(nums[idx]);
+        solve(nums,temp,idx+1);
+        
+    }
+    
+    vector<vector<int>> subsets(vector<int>& nums) {
+        vector<int>temp;
+        solve(nums,temp,0);
+        return ans;
+    }
+};
