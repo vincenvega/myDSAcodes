@@ -20,7 +20,7 @@ void merge(vector<int> &arr,int s,int e){
             j++;
         }
     }
-    // this loop will break when any 1 of the arr is exhausted
+    // this loop will break when any 1 half of the arr is exhausted
 
     //so copy rem elems from 1st half
     while(i<=m){
