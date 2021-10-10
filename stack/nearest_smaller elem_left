@@ -1,0 +1,60 @@
+// 
+#include<bits/stdc++.h>
+#define ff                first
+#define ss                second
+#define ll                long long
+#define pb                push_back
+#define mp                make_pair
+#define pii               pair<ll,ll>
+#define vi                vector<ll>
+#define mii               map<ll,ll>
+#define pqb               priority_queue<ll>
+#define pqs               priority_queue<int,vi,greater<ll> >
+#define mod               1000000007
+#define inf               1e18
+#define w(t)              ll t;cin>>t;while(t--)
+#define f(n)              for(ll i=0;i<n;i++)
+#define ps(x,y)           fixed<<setprecision(y)<<x
+#define setbits(x)        __builtin_popcountll(x)
+#define zrobits(x)        __builtin_ctzll(x)
+#define mk(arr,n,type)    type *arr=new type[n];
+using namespace std;
+
+vi nearest_smaller(vi a,ll n){
+    stack<ll>st; vi ans;
+
+    f(n)
+    {
+        while( !st.empty() && st.top()>= a[i] )   // jb tk stack is not empty && jb tk top ele is greater than cur elem
+        {                          
+            st.pop();     // pop kro taaki reqd elem hi reh jae
+        }
+
+        // push_back in ans arr after end of while loop
+
+        if(st.empty()) ans.push_back(-1);  // if stack empty push_back or print -1
+        else ans.push_back(st.top());
+
+        // put cur elem in stack
+        st.push(a[i]);
+    }
+    
+
+    return ans;
+}
+
+int main(){ios_base::sync_with_stdio(false); cin.tie(0);
+
+w(t)
+{
+    ll n; cin>>n;
+    ll x; vi a,ans;
+    f(n){     cin>>x; a.push_back (x);  }
+    
+    ans=nearest_smaller(a,n);
+
+    for(auto ele : ans){
+    cout<<ele<<endl;
+    }
+}
+return 0;}
